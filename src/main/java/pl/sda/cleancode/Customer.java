@@ -49,6 +49,10 @@ abstract class Customer {
         return this.address;
     }
 
+    protected void markVerified() {
+        this.customerVerification = new CustomerVerification(LocalDateTime.now(), CustomerVerifier.AUTO_EMAIL);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

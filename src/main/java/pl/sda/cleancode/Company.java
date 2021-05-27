@@ -23,6 +23,16 @@ final class Company extends Customer {
         return vat;
     }
 
+    static Company from(RegisterCompanyForm form) {
+        final var company = new Company(new Email(form.getEmail()),
+            new Name(form.getName()),
+            new Vat(form.getVat()));
+        if (form.isVerified()) {
+            company.markVerified();
+        }
+        return company;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
